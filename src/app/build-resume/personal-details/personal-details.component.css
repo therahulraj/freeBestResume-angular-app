@@ -1,0 +1,105 @@
+.heading {
+    font-family: 'DMSerifDisplay-Regular', serif;
+    font-size: 2.6rem;
+    font-weight: 400;
+}
+
+.description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.description-outside {
+    display: none;
+}
+
+.personal-details label {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+}
+
+.personal-details input {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    border: 1px solid #000;
+    border-radius: 0;
+    /* outline: none; */
+    padding: 5px 8px;
+}
+
+.personal-details input:focus {
+    border-radius: 0;
+    outline: 1.2px solid #000;
+}
+
+.photo {
+    width: 70%;
+    height: inherit;
+    overflow: hidden;
+    background-color: rgb(242, 242, 242);
+    border-radius: 5px;
+    /* border: 1px solid; */
+}
+
+.photo img {
+    display: inline-block;
+    margin: 0 auto;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    /* border: 1px solid; */
+}
+
+.std-button {
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    background-color: #000;
+    color: #fff;
+    /* padding: 14px 42px; */
+    font-size: 1rem;
+}
+
+.upload-photo-button {
+    width: 70%;
+}
+
+@media screen and (max-width: 1200px) {
+    .photo {
+        width: 75%;
+    }
+
+    .upload-photo-button {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+
+    .description-outside {
+        display: inherit;
+    }
+
+    .description-inside {
+        display: none;
+    }
+
+    .photo {
+        width: 80%;
+    }
+
+    .upload-photo-button {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .photo {
+        width: 90%;
+    }
+
+    .upload-photo-button {
+        width: 90%;
+    }
+}

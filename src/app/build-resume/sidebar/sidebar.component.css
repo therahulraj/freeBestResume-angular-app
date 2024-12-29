@@ -1,0 +1,26 @@
+.sidebar {
+    
+    background-color: #000;
+}
+
+.sidebar-icon {
+    padding: 14px;
+    border-radius: 100%;
+    width: 60%;
+    background-color: #fff;
+}
+
+.sidebar-icon svg {
+    /* margin: 0 auto; */
+    width: 100%;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.sidebar-icon-education {
+    padding: 10px;
+}
+
+.sidebar-icon path {
+    fill: #000 !important;
+}

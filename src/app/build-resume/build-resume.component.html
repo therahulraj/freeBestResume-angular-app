@@ -1,0 +1,25 @@
+<div class="container-fluid g-0">
+    <div class="row g-0">
+        <div class="col-0 col-md-1 sidebar">
+            <app-sidebar></app-sidebar>
+        </div>
+
+
+
+
+        <!-- here top padding 5 and x axis 3 -->
+        <div class="col-12 col-md-7">
+            <app-personal-details></app-personal-details>
+        </div>
+
+        
+
+
+
+        <div class="col-0 col-md-4 bg-warning"><pdf-viewer [src]=demosrc
+            [render-text]="true"
+            [original-size]="false"
+            style="width: 600px; height: 900px"
+></pdf-viewer></div>
+    </div>
+</div>
