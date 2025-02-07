@@ -1,0 +1,230 @@
+<div #myDiv class="resume-template print-mimic print-mimic" appSetScale>
+    <div class="demo-scale">
+    
+         <!-- firstName and lastName -->
+        <h1 class="text-center name ls-3xl" *ngIf="isAnyPresent([this.resume?.personal?.firstName, this.resume?.personal?.lastName])">
+            <span *ngIf="isNotEmpty(this.resume?.personal?.firstName)">{{this.resume?.personal?.firstName}}</span>
+            <span *ngIf="isAllPresent([this.resume?.personal?.firstName, this.resume?.personal?.lastName])">&nbsp;</span>
+            <span *ngIf="isNotEmpty(this.resume?.personal?.lastName)">{{this.resume?.personal?.lastName}}</span>
+        </h1>
+
+        <!-- main personal details -->
+        <div class="" *ngIf="isNotEmpty(this.resume?.personal?.otherFields)">
+
+            <div class="text-l ls-xl text-center c-mt-2">
+                
+                <!-- first row -->
+                 <div *ngFor="let otherField of this.resume?.personal?.otherFields; let i = index;">
+                    <p *ngIf=""></p>
+                 </div>
+                <div class="" *ngIf="isAnyPresent([this.resume?.personal?.email, this.resume?.personal?.phoneNumber, this.resume?.personal?.linkedIn])">
+                    <p>
+                        <span *ngIf="isNotEmpty(this.resume?.personal?.email)"><a href="">{{this.resume?.personal?.email}}</a></span>
+                        <span *ngIf="isNotEmpty(this.resume?.personal?.phoneNumber)">
+                            <span *ngIf="this.isNotEmpty(this.resume?.personal?.email)">&nbsp;&#9679;&nbsp;</span>
+                            <span>{{this.resume?.personal?.phoneNumber}}</span>
+                        </span>
+                        <span *ngIf="isNotEmpty(this.resume?.personal?.linkedIn)">
+                            <span *ngIf="this.isAnyPresent([this.resume?.personal?.email, this.resume?.personal?.phoneNumber])">&nbsp;&#9679;&nbsp;</span>
+                            <span><a href="">{{this.resume?.personal?.linkedIn}}</a></span>
+                        </span>
+                    </p>
+                </div>
+
+                <!-- github, city, country -->
+                <div class="" *ngIf="isAnyPresent([this.resume?.personal?.github, this.resume?.personal?.city, this.resume?.personal?.country])">
+                    <p>
+                        <span *ngIf="isNotEmpty(this.resume?.personal?.github)"><a href="">{{this.resume?.personal?.github}}</a></span>
+                        <span *ngIf="isAnyPresent([this.resume?.personal?.city, this.resume?.personal?.country])">
+                            <span *ngIf="this.isNotEmpty(this.resume?.personal?.github)">&nbsp;&#9679;&nbsp;</span>
+                            <span *ngIf="isNotEmpty(this.resume?.personal?.city)">{{this.resume?.personal?.city}}</span>
+                            <span *ngIf="isAllPresent([this.resume?.personal?.city, this.resume?.personal?.country])">,&nbsp;</span>
+                            <span *ngIf="isNotEmpty(this.resume?.personal?.country)">{{this.resume?.personal?.country}}</span>
+                            <!-- <span *ngIf="isAllPresent([this.resume?.personal?.city, this.resume?.personal?.country])">{{this.resume?.personal?.phoneNumber}}</span> -->
+                        </span>
+                    </p>
+                </div>
+                
+                
+            </div>
+
+        </div>
+
+
+        <!-- Experience section -->
+        <div class="c-mt-4" *ngIf="isNotEmpty(this.resume?.experiences)">
+            <h2 class="text-3xl ls-2xl primary-theme-color georgia-bold">{{this.resume?.experienceSecTitle || 'Experience'}}</h2>
+            <hr class="primary-theme-color c-mt-1">
+            <div class="c-mt-3" *ngFor="let experience of this.resume?.experiences">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 *ngIf="isNotEmpty(experience?.jobTitle)" class="text-2xl georgia-bold">{{experience?.jobTitle}}</h2>
+                    <!-- <div *ngIf="this.isAnyPresent([experience?.startDate, experience?.endDate])"> -->
+                    <p class="text-l" *ngIf="this.isAnyPresent([experience?.startDate, experience?.endDate])">
+                        <span *ngIf="isNotEmpty(experience?.startDate)">{{experience?.startDate}}</span>
+                        <span *ngIf="isNotEmpty(experience?.startDate) && isNotEmpty(experience?.endDate)">&nbsp;-&nbsp;</span>
+                        <span *ngIf="isNotEmpty(experience?.endDate)">{{experience?.endDate}}</span>
+                    </p>
+                    <!-- </div> -->
+                </div>
+                
+                <h3 class="text-xl c-mt-1" *ngIf="this.isAnyPresent([experience?.employer, experience?.location])">
+                    <span class="georgia-bold" *ngIf="isNotEmpty(experience?.employer)">{{experience?.employer}}</span>
+                    <span *ngIf="isAllPresent([experience?.employer, experience?.location])">,&nbsp;</span>
+                    <span *ngIf="isNotEmpty(experience?.location)">{{experience?.location}}</span>
+                </h3>
+                
+
+                <div class="c-mt-2 wrap c-mt-2" *ngIf="isNotEmpty(experience?.details)">
+                    <div class="d-flex align-items-start c-mt-1 text-l" *ngFor="let detail of experience.details">
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>&#9679;</p>
+                        <p>&nbsp;</p>
+                        <p class="">{{detail}}</p>
+                    </div>
+                </div>
+
+                
+
+            </div>
+
+        </div>
+
+        <!-- Education section -->
+        <div class="c-mt-4" *ngIf="isNotEmpty(this.resume?.educations)">
+            <h2 class="text-3xl ls-2l primary-theme-color georgia-bold">{{this.resume?.experienceSecTitle || 'Education'}}</h2>
+            <hr class="primary-theme-color c-mt-1">
+            <div class="c-mt-3" *ngFor="let education of this.resume?.educations">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="text-xl georgia-bold wrap" *ngIf="isAnyPresent([education?.degreeName, education?.fieldOfStudy])">
+                        <span *ngIf="isNotEmpty(education?.degreeName)">{{education?.degreeName}}</span>
+                        <span *ngIf="isAllPresent([education?.degreeName, education?.fieldOfStudy])">,&nbsp;</span>
+                        <span *ngIf="isNotEmpty(education?.fieldOfStudy)">{{education?.fieldOfStudy}}</span>
+                    </h3>
+                    <p class="text-l" *ngIf="isAnyPresent([education?.startDate, education?.endDate])">
+                        <span *ngIf="isNotEmpty(education?.startDate)">{{education?.startDate}}</span>
+                        <span *ngIf="isAllPresent([education?.startDate, education?.endDate])">&nbsp;-&nbsp;</span>
+                        <span *ngIf="isNotEmpty(education?.endDate)">{{education?.endDate}}</span>
+                    </p>
+                </div>
+                <h4 class="c-mt-1 text-xl" *ngIf="isAllPresent([education?.instName, education?.instLocation])">
+                    <span *ngIf="isNotEmpty(education?.instName)">{{education?.instName}}</span>
+                    <span *ngIf="isAllPresent([education?.instName, education?.instLocation])">,&nbsp;</span>
+                    <span *ngIf="isNotEmpty(education?.instLocation)">{{education?.instLocation}}</span>
+                </h4>
+                <p class="c-mt-1 text-l" *ngIf="isNotEmpty(education?.grade)"><span>{{education?.gradeTitle || 'Grade'}}:&nbsp;{{education?.grade}}</span></p>
+                <div *ngIf="isNotEmpty(education?.courses)">
+                    <h4 class="text-l c-mt-1 georgia-bold">{{education?.coursesTitle || 'Courses'}}</h4>
+                    <div class=" text-l c-mt-1 d-flex align-items-start" *ngFor="let course of education?.courses">
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>&#9679;</p>
+                        <p>&nbsp;</p>
+                        <p class="">{{course}}</p>
+                    </div>
+                </div>
+
+                <div *ngIf="isNotEmpty(education?.achievements)">
+                    <h4 class="text-l c-mt-1 georgia-bold">{{education?.achievementsTitle || 'Achievements'}}</h4>
+                    <div class=" text-l c-mt-1 d-flex align-items-start" *ngFor="let achievement of education?.achievements">
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>&#9679;</p>
+                        <p>&nbsp;</p>
+                        <p class="">{{achievement}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- skills -->
+        <div class="c-mt-4" *ngIf="isNotEmpty(this.resume?.skills)">
+            <h2 class="text-3xl ls-2xl primary-theme-color georgia-bold">{{this.resume?.skillsSecTitle || 'Skills'}}</h2>
+            <hr class="primary-theme-color c-mt-1">
+            <div class="c-mt-3" *ngIf="this.resume?.skills?.generalView; else skillsGroupView">
+                <div class="d-flex align-items-start c-mt-1 text-l" *ngFor="let skill of this.resume?.skills?.generalGroup">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p>&#9679;</p>
+                    <p>&nbsp;</p>
+                    <p class="">{{skill}}</p>
+                </div>
+            </div>
+
+            <ng-template #skillsGroupView>
+                <div class="c-mt-3">
+                    <div class="d-flex align-items-start c-mt-1 text-l" *ngFor="let skillsGroup of this.resume?.skills?.skillsGroup">
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>&#9679;</p>
+                        <p>&nbsp;</p>
+                        <p class="">
+                            <span class="georgia-bold" *ngIf="skillsGroup?.groupName">{{skillsGroup?.groupName}}</span>
+                            <span *ngIf="isAllPresent([skillsGroup?.groupName, skillsGroup?.skills])">:&nbsp;</span>
+                            <span *ngFor="let skill of skillsGroup?.skills; let i = index">
+                                <span *ngIf="i != 0">,&nbsp;</span>
+                                <span>{{skill}}</span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+            </ng-template>
+
+        
+
+        </div>
+
+        <!-- project -->
+            <div class="c-mt-4" *ngIf="isNotEmpty(this.resume?.projects)">
+            <h2 class="text-3xl ls-2xl primary-theme-color georgia-bold">{{this.resume?.projectSecTitle || 'Projects'}}</h2>
+            <hr class="primary-theme-color c-mt-1">
+            <div class="c-mt-3" *ngFor="let project of this.resume?.projects">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 *ngIf="isNotEmpty(project?.title)" class="text-xl georgia-bold">{{project?.title}}</h2>
+                    <!-- <div *ngIf="this.isAnyPresent([experience?.startDate, experience?.endDate])"> -->
+                    <p class="text-l" *ngIf="this.isAnyPresent([project?.startDate, project?.endDate])">
+                        <span *ngIf="isNotEmpty(project?.startDate)">{{project?.startDate}}</span>
+                        <span *ngIf="isAllPresent([project?.startDate, project?.endDate])">&nbsp;-&nbsp;</span>
+                        <span *ngIf="isNotEmpty(project?.endDate)">{{project?.endDate}}</span>
+                    </p>
+                    <!-- </div> -->
+                    
+                </div>
+
+                <div class="c-mt-2">
+                    <p class="c-mt-1 text-l" *ngFor="let projectLink of project?.projectLinks">
+                        <ng-container *ngIf="isNotEmpty(projectLink)">
+                            <span class="georgia-bold" *ngIf="isNotEmpty(projectLink?.title)">{{projectLink?.title}}</span>
+                            <span *ngIf="isAllPresent([projectLink?.title, projectLink?.link])">:&nbsp;</span>
+                            <span *ngIf="isNotEmpty(projectLink?.link?.linkUrl)"><a href={{projectLink?.link?.linkUrl}}>{{projectLink?.link?.linkText || projectLink?.link?.linkUrl}}</a></span>
+                        </ng-container>
+                    </p>
+                </div>
+
+                <div class="c-mt-2 wrap c-mt-2" *ngIf="isNotEmpty(project?.details)">
+                    <div class="d-flex align-items-start c-mt-1 text-l" *ngFor="let detail of project?.details">
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>&#9679;</p>
+                        <p>&nbsp;</p>
+                        <p class="">{{detail}}</p>
+                    </div>
+                </div>
+                
+                
+                <p class="c-mt-2 text-l" *ngIf="isNotEmpty(project?.skillsUsed)">
+                    <span class="georgia-bold">{{project?.skillsUsedTitle || 'Skills Used'}}:&nbsp;</span>
+                    <span *ngFor="let skill of project?.skillsUsed; let i = index">
+                        <span *ngIf="i != 0">,&nbsp;</span>
+                        <span>{{skill}}</span>
+                    </span>
+                </p>
+
+                
+                    
+
+            </div>
+            </div>
+
+
+
+    </div>
+
+</div>
+    

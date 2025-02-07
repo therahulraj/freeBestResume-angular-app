@@ -1,0 +1,8 @@
+<div id="print-section">
+    <!-- <iframe style="height: 500px; width: 500px;" #iframe (load)="onLoad(iframe)"></iframe> -->
+     <app-resume-template class="print-section" [resume]="this.resume" style="display: flex; justify-content: center;"></app-resume-template>
+</div>
+<button [useExistingCss]="true" 
+        printSectionId="print-section" ngxPrint>print</button> 
+
+        

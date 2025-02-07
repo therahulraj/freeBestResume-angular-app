@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuildResumeComponent implements OnInit {
 
-  demosrc = "assets/images/untitled-2.pdf";
+  demosrc = "assets/images/untitled-10.pdf";
 
   constructor() { }
 
