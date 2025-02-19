@@ -1,0 +1,18 @@
+<div class="mt-lg-5 mt-4">
+    <h2>Experience details</h2>
+    <div *ngFor="let experience of experiences">
+        <input type="text" [(ngModel)]="experience.jobTitle">
+        <input type="text" [(ngModel)]="experience.employer">
+        <input type="text" [(ngModel)]="experience.location">
+        <input type="text" [(ngModel)]="experience.startDate">
+        <input type="text" [(ngModel)]="experience.endDate">
+        <div *ngFor="let detail of experience.details; let i = index;">
+            <input type="text" [(ngModel)]="experience.details[i]">
+        </div>
+        
+
+
+
+    </div>
+
+</div>

@@ -3,7 +3,7 @@ import { TitleLink } from "./title-link.model";
 import { TitleText } from "./title-text.model";
 
 export class LinkText {
-    isLink?: boolean;
-    link?: TitleLink;
-    text?: TitleText;
+    isLink: boolean = false;
+    link = new TitleLink();
+    text = new TitleText();
 }

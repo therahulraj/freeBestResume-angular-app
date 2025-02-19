@@ -13,20 +13,64 @@ export class ResumeDetailsService {
                 "link": {
                     "title": "email",
                     "link": {
-                        "linkUrl": "rahulraj16mar@gmail.com",
-                        "linkText": "Email"
+                        "linkText": "",
+                        "linkUrl": "rahulraj16mar@gmail.com"
                     }
                 }
             },
             {
                 "isLink": false,
                 "text": {
-                    "title": "phoneNumber",
+                    "title": "phone Number",
                     "text": "+91 7484898911"
+                }
+            },
+            {
+                "isLink": true,
+                "link": {
+                    "title": "LinkedIn",
+                    "link": {
+                        "linkText": "",
+                        "linkUrl": "https://www.linkedin.com/in/the-rahulraj/"
+                    }
+                }
+            },
+            {
+                "isLink": true,
+                "link": {
+                    "title": "Github",
+                    "link": {
+                        "linkText": "",
+                        "linkUrl": "https://github.com/therahulraj"
+                    }
+                }
+            },
+            {
+                "isLink": false,
+                "text": {
+                    "title": "phone Number",
+                    "text": "Gumla, India"
                 }
             }
         ]
-    }
+    }, 
+        "experiences": [
+                {
+                    "jobTitle": "Java Developer",
+                    "employer": "Tata Consultancy Services",
+                    "location": "Kolkata, India",
+                    "startDate": "21/02/2021",
+                    "endDate": "27/05/2024",
+                    "details": [
+                        "Developed and maintained web applications using React, Node.js, and PostgreSsergedgdfgsdfgdsfgsdfgsdfgsdfgsdfgsdfQL",
+                        "Collaborated with designers and backend developers to implement user-friendly interfaces.",
+                        "Optimized application performance, reducing load time by 40%.",
+                        "Optimized application performance, reducing load time by 40%."
+
+                    ]
+                }
+
+        ]
 }`;
 
     resume: Resume = new Resume();

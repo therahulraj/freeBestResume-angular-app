@@ -2,53 +2,136 @@
     <div class="demo-scale">
     
          <!-- firstName and lastName -->
-        <h1 class="text-center name ls-3xl" *ngIf="isAnyPresent([this.resume?.personal?.firstName, this.resume?.personal?.lastName])">
-            <span *ngIf="isNotEmpty(this.resume?.personal?.firstName)">{{this.resume?.personal?.firstName}}</span>
-            <span *ngIf="isAllPresent([this.resume?.personal?.firstName, this.resume?.personal?.lastName])">&nbsp;</span>
-            <span *ngIf="isNotEmpty(this.resume?.personal?.lastName)">{{this.resume?.personal?.lastName}}</span>
+        <h1 class="text-center name ls-3xl" *ngIf="isAnyPresent([this.resumeDetails.personal?.firstName, this.resumeDetails.personal?.lastName])">
+            <!-- this is hooked -->
+            <span *ngIf="isNotEmpty(this.resumeDetails.personal?.firstName)">{{this.resumeDetails.personal?.firstName}}</span>
+            <span *ngIf="isAllPresent([this.resumeDetails.personal?.firstName, this.resumeDetails.personal?.lastName])">&nbsp;</span>
+            <span *ngIf="isNotEmpty(this.resume?.personal?.lastName)">{{this.resumeDetails.personal?.lastName}}</span>
         </h1>
 
         <!-- main personal details -->
-        <div class="" *ngIf="isNotEmpty(this.resume?.personal?.otherFields)">
+        <div class="" >
+            <!-- *ngIf="isNotEmpty(this.resume?.personal?.otherFields)" -->
+            <div class="text-l ls-xl text-center c-mt-2" *ngIf="isNotEmpty(this.resumeDetails.personal?.otherFields)">
+                <p>
+                    <ng-container *ngFor="let otherField of this.resumeDetails.personal?.otherFields; let i = index;">
+                        <ng-container *ngIf="i < 3">
+                            <ng-container *ngIf="otherField.isLink">
+                                <ng-container *ngIf="isNotEmpty(otherField.link?.link?.linkUrl)">
+                                    <span>
+                                        <span *ngIf="i > 0">&nbsp;&#9679;&nbsp;</span>
+                                        <span *ngIf="isNotEmpty(otherField.link?.link?.linkText)"><a [href]="otherField.link.link.linkUrl">{{otherField.link.link.linkText}}</a></span>
+                                        <span *ngIf="!isNotEmpty(otherField.link?.link?.linkText)"><a [href]="otherField.link.link.linkUrl">{{otherField.link.link.linkUrl}}</a></span>
+                                        <span></span>
+                                    </span>
+                                </ng-container>
+                            </ng-container>
+                            
+                            <ng-container *ngIf="!otherField.isLink">
+                                <ng-container *ngIf="isNotEmpty(otherField.text?.text)">
+                                    <span>
+                                        <span *ngIf="i > 0">&nbsp;&#9679;&nbsp;</span>
+                                        <span>{{otherField.text.text}}</span>
+                                    </span>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </p>
+                <p>
+                    <ng-container *ngFor="let otherField of this.resumeDetails.personal?.otherFields; let i = index;">
+                        <ng-container *ngIf="i >= 3 && i < 5">
+                            <ng-container *ngIf="otherField.isLink">
+                                <ng-container *ngIf="isNotEmpty(otherField.link?.link?.linkUrl)">
+                                    <span>
+                                        <span *ngIf="i > 3">&nbsp;&#9679;&nbsp;</span>
+                                        <span *ngIf="isNotEmpty(otherField.link?.link?.linkText)"><a [href]="otherField.link.link.linkUrl">{{otherField.link.link.linkText}}</a></span>
+                                        <span *ngIf="!isNotEmpty(otherField.link?.link?.linkText)"><a [href]="otherField.link.link.linkUrl">{{otherField.link.link.linkUrl}}</a></span>
+                                        <span></span>
+                                    </span>
+                                </ng-container>
+                            </ng-container>
+                            
+                            <ng-container *ngIf="!otherField.isLink">
+                                <ng-container *ngIf="isNotEmpty(otherField.text?.text)">
+                                    <span>
+                                        <span *ngIf="i > 0">&nbsp;&#9679;&nbsp;</span>
+                                        <span>{{otherField.text.text}}</span>
+                                    </span>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </p>
 
-            <div class="text-l ls-xl text-center c-mt-2">
-                
-                <!-- first row -->
-                 <div *ngFor="let otherField of this.resume?.personal?.otherFields; let i = index;">
-                    <p *ngIf=""></p>
-                 </div>
-                <div class="" *ngIf="isAnyPresent([this.resume?.personal?.email, this.resume?.personal?.phoneNumber, this.resume?.personal?.linkedIn])">
-                    <p>
-                        <span *ngIf="isNotEmpty(this.resume?.personal?.email)"><a href="">{{this.resume?.personal?.email}}</a></span>
-                        <span *ngIf="isNotEmpty(this.resume?.personal?.phoneNumber)">
-                            <span *ngIf="this.isNotEmpty(this.resume?.personal?.email)">&nbsp;&#9679;&nbsp;</span>
-                            <span>{{this.resume?.personal?.phoneNumber}}</span>
-                        </span>
-                        <span *ngIf="isNotEmpty(this.resume?.personal?.linkedIn)">
-                            <span *ngIf="this.isAnyPresent([this.resume?.personal?.email, this.resume?.personal?.phoneNumber])">&nbsp;&#9679;&nbsp;</span>
-                            <span><a href="">{{this.resume?.personal?.linkedIn}}</a></span>
-                        </span>
-                    </p>
-                </div>
+                <p>
+                    <ng-container *ngFor="let otherField of this.resumeDetails.personal?.otherFields; let i = index;">
+                        <ng-container *ngIf="i >= 5 && i < 7">
+                            <ng-container *ngIf="otherField.isLink">
+                                <ng-container *ngIf="isNotEmpty(otherField.link?.link?.linkUrl)">
+                                    <span>
+                                        <span *ngIf="i > 5">&nbsp;&#9679;&nbsp;</span>
+                                        <span *ngIf="isNotEmpty(otherField.link?.link?.linkText)"><a [href]="otherField.link.link.linkUrl">{{otherField.link.link.linkText}}</a></span>
+                                        <span *ngIf="!isNotEmpty(otherField.link?.link?.linkText)"><a [href]="otherField.link.link.linkUrl">{{otherField.link.link.linkUrl}}</a></span>
+                                        <span></span>
+                                    </span>
+                                </ng-container>
+                            </ng-container>
+                            
+                            <ng-container *ngIf="!otherField.isLink">
+                                <ng-container *ngIf="isNotEmpty(otherField.text?.text)">
+                                    <span>
+                                        <span *ngIf="i > 0">&nbsp;&#9679;&nbsp;</span>
+                                        <span>{{otherField.text.text}}</span>
+                                    </span>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </p>
 
-                <!-- github, city, country -->
-                <div class="" *ngIf="isAnyPresent([this.resume?.personal?.github, this.resume?.personal?.city, this.resume?.personal?.country])">
-                    <p>
-                        <span *ngIf="isNotEmpty(this.resume?.personal?.github)"><a href="">{{this.resume?.personal?.github}}</a></span>
-                        <span *ngIf="isAnyPresent([this.resume?.personal?.city, this.resume?.personal?.country])">
-                            <span *ngIf="this.isNotEmpty(this.resume?.personal?.github)">&nbsp;&#9679;&nbsp;</span>
-                            <span *ngIf="isNotEmpty(this.resume?.personal?.city)">{{this.resume?.personal?.city}}</span>
-                            <span *ngIf="isAllPresent([this.resume?.personal?.city, this.resume?.personal?.country])">,&nbsp;</span>
-                            <span *ngIf="isNotEmpty(this.resume?.personal?.country)">{{this.resume?.personal?.country}}</span>
-                            <!-- <span *ngIf="isAllPresent([this.resume?.personal?.city, this.resume?.personal?.country])">{{this.resume?.personal?.phoneNumber}}</span> -->
-                        </span>
-                    </p>
-                </div>
-                
-                
             </div>
 
         </div>
+
+
+        <div class="c-mt-4" *ngIf="isNotEmpty(this.resumeDetails?.experiences)">
+            <h2 class="text-3xl ls-2xl primary-theme-color georgia-bold">{{this.resumeDetails.experienceSecTitle || 'Experience'}}</h2>
+            <hr class="primary-theme-color c-mt-1">
+            <div class="c-mt-3" *ngFor="let experience of this.resumeDetails?.experiences">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 *ngIf="isNotEmpty(experience?.jobTitle)" class="text-2xl georgia-bold">{{experience?.jobTitle}}</h2>
+                    <!-- <div *ngIf="this.isAnyPresent([experience?.startDate, experience?.endDate])"> -->
+                    <p class="text-l" *ngIf="this.isAnyPresent([experience?.startDate, experience?.endDate])">
+                        <span *ngIf="isNotEmpty(experience?.startDate)">{{experience?.startDate}}</span>
+                        <span *ngIf="isAnyPresent([experience?.startDate, experience?.endDate])">&nbsp;-&nbsp;</span>
+                        <span *ngIf="isNotEmpty(experience?.endDate)">{{experience?.endDate}}</span>
+                    </p>
+                    <!-- </div> -->
+                </div>
+                
+                <h3 class="text-xl c-mt-1" *ngIf="this.isAnyPresent([experience?.employer, experience?.location])">
+                    <span class="georgia-bold" *ngIf="isNotEmpty(experience?.employer)">{{experience?.employer}}</span>
+                    <span *ngIf="isAllPresent([experience?.employer, experience?.location])">,&nbsp;</span>
+                    <span *ngIf="isNotEmpty(experience?.location)">{{experience?.location}}</span>
+                </h3>
+                
+
+                <div class="c-mt-2 wrap c-mt-2" *ngIf="isNotEmpty(experience?.details)">
+                    <div class="d-flex align-items-start c-mt-1 text-l" *ngFor="let detail of experience.details">
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>&#9679;</p>
+                        <p>&nbsp;</p>
+                        <p class="">{{detail}}</p>
+                    </div>
+                </div>
+
+                
+
+            </div>
+
+        </div>
+
 
 
         <!-- Experience section -->

@@ -11,6 +11,7 @@ export class ResumeTemplateComponent implements OnInit {
     @Input() resume?: Resume;
     firstPrsent: boolean = false;
     secPresent: boolean = false;
+    resumeDetails: Resume = new Resume();
     // skillsGroupView: TemplateRef<NgIfContext<boolean|undefined>>|null;
     // scaleValue: number = 1;
     // scaleString: string = `scaleX(` + this.scaleValue + `)`;
@@ -29,6 +30,7 @@ export class ResumeTemplateComponent implements OnInit {
     // }
 
   constructor(private resumeDetailsService: ResumeDetailsService) { 
+    this.resumeDetails = this.resumeDetailsService.resume;
     this.firstPrsent = false;
     
   }

@@ -14,6 +14,7 @@ import { NgxPrintModule } from 'ngx-print';
 import { SetScaleDirective } from './build-resume/resume-template-viewer/resume-template/set-scale.directive';
 import { ScaleTemplateDirective } from './build-resume/resume-template-viewer/scale-template.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ExperienceComponent } from './build-resume/resume-details/experience/experience.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ResumeTemplateComponent,
     PersonalDetailsComponent,
     SetScaleDirective,
-    ScaleTemplateDirective
+    ScaleTemplateDirective,
+    ExperienceComponent
   ],
   imports: [
     BrowserModule,

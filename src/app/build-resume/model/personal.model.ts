@@ -3,7 +3,7 @@ import { LinkText } from "./link-text.model";
 export class Personal {
     firstName?: string;
     lastName?: string;
-    otherFields?: LinkText[];
+    otherFields: LinkText[] = [];
 
 
     email?: string;
@@ -11,7 +11,7 @@ export class Personal {
     country?: string;
     pincode?: string;
     phoneNumber?: string;
-    passport?: string;
+    passport?: string;  
     drivingLicence?: string;
     dateOfBirth?: string;
     nationality?: string;

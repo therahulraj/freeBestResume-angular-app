@@ -1,4 +1,4 @@
 export class Link {
-    linkUrl?: string;
-    linkText?: string;
+    linkUrl:string = '';
+    linkText:string = '';
 }

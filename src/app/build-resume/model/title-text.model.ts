@@ -1,4 +1,4 @@
 export class TitleText {
-    title?: string;
-    text?: string;
+    title: string =  '';
+    text: string = '';
 }

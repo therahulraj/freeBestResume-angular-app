@@ -4,5 +4,5 @@ export class Experience {
     location?: string;
     startDate?: string;
     endDate?: string;
-    details?: string[];
+    details: string[] = [];
 }

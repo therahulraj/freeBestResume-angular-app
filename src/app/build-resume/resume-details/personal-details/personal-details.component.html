@@ -9,28 +9,37 @@
             <p class="description description-inside">Include your full name and at least email or phone number.</p>
             <div class="first-name">
                 <label class="d-block mb-1" for="">First Name</label>
-                <input type="text" name="firstName" [( ngModel )]="this.resumePersonalDetails?.firstName">
+                <input type="text" name="firstName" id="" [(ngModel)]="resumePersonalDetails.firstName">
+                <!-- <ng-template #firstName>
+                    <input type="text" name="firstName2" [(ngModel)]="resumePersonalDetails.firstName" placeholder="firsName2" [(ngModel)]="resumePersonalDetails.firstName">
+                </ng-template> -->
+                
             </div>
 
             <div class="city mt-4">
                 <label class="d-block mb-1" for="">Last Name</label>
-                <input type="text" name="lastName" [( ngModel )]="this.resumePersonalDetails?.lastName">
+                <input type="text" name="lastName" [(ngModel)]="resumePersonalDetails.lastName">
             </div>
 
-            <div *ngFor="let otherField of this.resumePersonalDetails?.otherFields">
-                <div *ngIf="otherField.isLink; else text">
-                    <input type="text" name="otherField.link.title" [( ngModel )]="otherField?.link?.title">
-                    <input type="text" name="otherField.link.link" [( ngModel )]="otherField?.link?.link">
+            <div *ngFor="let otherField of resumePersonalDetails.otherFields; let i = index;">
+                
+                <div *ngIf="otherField.isLink">
+                    <input type="text" [(ngModel)]="otherField.link.title">
+                    <input type="text" [(ngModel)]="otherField.link.link.linkUrl">
+                    <input type="text" [(ngModel)]="otherField.link.link.linkText">
                 </div>
-                <ng-template #text>
-                    <input type="text" name="otherField.link.title" [( ngModel )]="otherField?.text?.title">
-                    <input type="text" name="otherField.link.link" [( ngModel )]="otherField?.text?.link">
-                </ng-template>
+                <div *ngIf="!otherField.isLink">
+                    <input type="text" [(ngModel)]="otherField.text.title">
+                    <input type="text" [(ngModel)]="otherField.text.text">
+                </div>
                 <!-- <div  *ngIf="otherField.isLink;">
                     <input type="text" name="otherField.link.title" [( ngModel )]="otherField?.link?.title">
                     <input type="text" name="otherField.link.link" [( ngModel )]="otherField?.link?.link">
                 </div> -->
+                <button class="std-button py-2 px-4 px-sm-5" (click)="removeOtherField(i)">Remove</button>
             </div>
+
+            <button class="std-button py-2 px-4 px-sm-5" (click)="addField()">Add</button>
 
 
         </div>
